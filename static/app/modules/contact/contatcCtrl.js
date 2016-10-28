@@ -13,7 +13,7 @@
 		.module('contact')
 		.controller('ContactCtrl', Contact);
 
-		Contact.$inject = [];
+		Contact.$inject = ['$http', 'ContactService'];
 
 		/*
 		* recommend
@@ -21,12 +21,14 @@
 		* and bindable members up top.
 		*/
 
-		function Contact() {
+		function Contact($http, ContactService) {
 			/*jshint validthis: true */
 			var vm = this;
 
 			vm.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
   			vm.data = [300, 500, 100];
+
+			console.log(ContactService.test());
 
 		}
 

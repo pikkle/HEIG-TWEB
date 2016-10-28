@@ -1,0 +1,122 @@
+(function () {
+    angular
+        .module('graph')
+        .factory('GitStatService', GitStatService);
+
+    GitStatService.$inject = ['$http', '$q'];
+
+    function GitStatService($http, $q) {
+
+        user = 'pikkle';
+        repo = 'HEIG-VD-TWEB';
+
+
+        return {
+            getUser: function () {
+                return user;
+            },
+
+            getRepo: function () {
+                return repo;
+            },
+
+            setUser: function (newUser) {
+                user =  newUser;
+            },
+
+            setRepo: function (newRepo) {
+                repo = newRepo;
+            },
+
+            getLanguages: function () {
+                var deferred = $q.defer();
+
+                var promiseLanguages = $http.get('/repos/' + user + '/' + repo + '/languages');
+                var languagesGraphLabels;
+                var languagesGraphData;
+
+
+                promiseLanguages.then(function (ret) {
+                    languages = ret.data;
+                    languagesGraphLabels = Object.keys(languages);
+                    languagesGraphData = [];
+                    for (item in languagesGraphLabels) {
+                        languagesGraphData.push(languages[languagesGraphLabels[item]]);
+                    }
+                    deferred.resolve({
+                        data:  languagesGraphData,
+                        labels: languagesGraphLabels
+                    });
+                });
+                return deferred.promise;
+            },
+
+            getContribs: function () {
+                var deferred = $q.defer();
+
+                var promiseContrib = $http.get('/repos/' + user + '/' + repo + '/stats/contributors');
+                promiseContrib.then(function (ret) {
+                    contrib = ret.data;
+
+                    contribGraphLabels = [];
+                    contribGraphData = [];
+
+
+                    for(item in contrib){
+                        contribGraphLabels.push(contrib[item]['author']['login']);
+                        contribGraphData.push(contrib[item]['total'])
+                    }
+
+                    deferred.resolve({
+                        data:  contribGraphData,
+                        labels: contribGraphLabels
+                    });
+                });
+
+                return deferred.promise;
+            },
+
+            getAddPerWeek: function () {
+                var deferred = $q.defer();
+
+                var promiseAddPerWeek = $http.get('/repos/' + user + '/' + repo + '/stats/code_frequency');
+
+                promiseAddPerWeek.then(function (ret) {
+                    add = ret.data;
+                    linesAddGraphData = [];
+                    linesDelGraphData = [];
+                    linesDiffGraphData = [];
+                    lineGraphLabels = [];
+                    weeks = [];
+                    lineGraphSeries = ['Ajout', 'Supperssion', 'Differance'];
+
+                    d = new Date(0);
+
+
+                    for (item in add){
+                        weeks.push(add[item][0]);
+
+                        d = new Date(0);
+                        d.setUTCSeconds(add[item][0]);
+
+                        lineGraphLabels.push(d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear());
+                        linesAddGraphData.push(add[item][1]);
+                        linesDelGraphData.push(add[item][2]);
+                        linesDiffGraphData.push(add[item][1] - add[item][2]);
+
+                    }
+
+                    deferred.resolve({
+                        data:  [linesAddGraphData, linesDelGraphData, linesDiffGraphData],
+                        labels: lineGraphLabels,
+                        series: lineGraphSeries
+                    });
+
+
+                });
+
+                return deferred.promise;
+            }
+        }
+    }
+})();

@@ -1,0 +1,51 @@
+<section id="features" class="features" style="text-align: center">
+    <div class="container">
+        <div class="row" style="margin-bottom: 30px">
+            <div class="col-md-4"><input ng-model="vm.user" type="text" name="user" placeholder="Utilisateur"/></div>
+            <div class="col-md-1" style="text-align: center; font-size: 30px; margin-top: 2px">/</div>
+            <div class="col-md-4"><input ng-model="vm.repo" type="text" name="repo" placeholder="Depo"/></div>
+            <div class="col-md-3">
+                <button class="btn btn-outline btn-xl" ng-click="vm.fetchApi()" name="validate">Valider</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <h2 class="md-title">Commits par auteur</h2>
+
+                <canvas id="bar" class="chart chart-bar"
+                        chart-data="vm.contribGraphData" chart-labels="vm.contribGraphLabels" chart-series="series">
+                </canvas>
+
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+
+                <h2 class="md-title">Languages utilisés</h2>
+
+                <canvas id="pie" class="chart chart-pie"
+                        chart-data="vm.languagesGraphData" chart-labels="vm.languagesGraphLabels" chart-options="options">
+                </canvas>
+
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 40px">
+            <div class="col-md-1"></div>
+
+            <div class="col-md-10">
+                <h2 class="md-title">Progression du nombre de lignes</h2>
+
+
+                <canvas id="bar2" class="chart chart-bar" chart-data="vm.linesGraphData"
+                        chart-labels="vm.lineGraphLabels" chart-series="vm.lineGraphSeries"
+                        chart-click="onClick">
+                </canvas>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</section>

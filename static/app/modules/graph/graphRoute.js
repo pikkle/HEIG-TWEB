@@ -1,13 +1,3 @@
-'use strict';
-
-/**
- * @ngdoc function
- * @name app.route:graphRoute
- * @description
- * # graphRoute
- * Route of the app
- */
-
 angular.module('graph')
 	.config(['$stateProvider', function ($stateProvider) {
 

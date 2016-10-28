@@ -2,7 +2,7 @@
   "name": "tweb-guithubexplorer",
   "version": "0.1.0",
   "description": "TWEB project GitHub Explorer",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +21,8 @@
     "angular-chart.js": "^1.0.3",
     "angular-core": "0.0.5",
     "angular-resource": "^1.5.8",
-    "angular-ui-router": "^0.3.1"
+    "angular-ui-router": "^0.3.1",
+    "express": "^4.14.0",
+    "node-fetch": "^1.6.3"
   }
 }

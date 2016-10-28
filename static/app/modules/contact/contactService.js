@@ -11,14 +11,24 @@
 
   	angular
 		.module('contact')
-		.factory('ContactService', Contact);
+		.factory('ContactService', ContactService);
 		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 		// function Name ($http, someSevide) {...}
 
-		Graph.$inject = ['$http'];
+		function ContactService() {
+			var counter = 0;
+			return {
+				test: function() {
+					counter++;
+					console.log("it works: " + counter);
+				},
 
-		function Graph ($http) {
-
+				test2: function() {
+					counter++;
+					console.log("A " + counter);
+				}
+			}
 		}
+
 
 })();
