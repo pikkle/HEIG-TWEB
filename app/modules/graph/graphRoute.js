@@ -4,10 +4,8 @@ angular.module('graph')
 		$stateProvider
 			.state('graph', {
 				url:'/',
-				templateUrl: 'app/modules/graph/graph.html',
+				templateUrl: 'modules/graph/graph.html',
 				controller: 'GraphCtrl',
 				controllerAs: 'vm'
 			});
-
-
 	}]);
