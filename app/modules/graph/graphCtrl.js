@@ -21,19 +21,22 @@
 
         vm.fetchApi = function () {
             console.log('test');
-            fetchApi(vm, GitStatService)
+            fetchApi(vm, $http, GitStatService)
         };
 
-        fetchApi(vm, GitStatService);
-
-
-
+        fetchApi(vm, $http, GitStatService);
 
     }
 
-    function fetchApi(vm, GitStatService) {
+    function fetchApi(vm, $http,GitStatService) {
         GitStatService.setUser(vm.user);
         GitStatService.setRepo(vm.repo);
+
+        $http.post('/api/request', {user: vm.user, repo: vm.repo}).then(function (ret) {
+            
+        });
+
+
 
        GitStatService.getLanguages().then(function (res) {
            console.log(1);

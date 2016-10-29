@@ -14,7 +14,7 @@ angular.module('contact')
 		$stateProvider
 			.state('contact', {
 				url:'/contact',
-				templateUrl: 'app/modules/contact/contact.html',
+				templateUrl: 'modules/contact/contact.html',
 				controller: 'ContactCtrl',
 				controllerAs: 'vm'
 			});

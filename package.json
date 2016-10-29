@@ -4,7 +4,7 @@
   "description": "TWEB project GitHub Explorer",
   "main": "server.js",
   "scripts": {
-      "postinstall": "cd ./app; npm  install"
+    "postinstall": "cd ./app; npm  install"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/pikkle/HEIG-VD-TWEB#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "mongodb": "^2.2.11",
+    "multer": "^1.2.0",
     "node-fetch": "^1.6.3"
   }
 }

@@ -13,7 +13,8 @@
 	angular.module('ghe', [
 		'ui.router',
 		'graph',
-		'contact'
+		'contact',
+		'stat'
 	]);
 
 })();
