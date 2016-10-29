@@ -14,7 +14,7 @@
 		'ui.router',
 		'graph',
 		'contact',
-		'stat'
+		'history'
 	]);
 
 })();
