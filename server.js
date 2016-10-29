@@ -15,11 +15,8 @@ app.use(bodyParser.json()); // for parsing application/json
 token = '150944d62a81baaf3daeaf81c0f42b009b96f560';
 var url = 'mongodb://localhost:32768/gitHubExplorer'
 
-MongoCLient.connect(url, function () {
-    console.log("ok");
-});
-
-
+//Api for the history
+app.use('/api', router);
 
 router.get('/request', function (req, res) {
     MongoCLient.connect(url, function (err, db) {
@@ -43,8 +40,6 @@ router.post('/request', upload.array(), function (req, res) {
         user = req.body.user;
     }
 
-    console.log(user, repo);
-
     MongoCLient.connect(url, function (err, db) {
         var collection = db.collection('request');
         collection.insert({user: user, repo: repo, date: new Date()})
@@ -55,18 +50,8 @@ router.post('/request', upload.array(), function (req, res) {
 });
 
 
-
-
-app.use('/api', router);
-
-
-
-app.use(express.static('app'));
-
+// Redirection to gitHub API. To avoid cross-site restriction
 app.get('/repos/*', function (req, res) {
-
-    var reponse;
-
     fetch('https://api.github.com' + req.url, {headers: {'Authorization': 'token ' + token}})
     .then(function(res2) {
         return res2.json();
@@ -76,12 +61,15 @@ app.get('/repos/*', function (req, res) {
     });
 });
 
+//To serve the angular page.
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/app/index.html'));
 });
 
-app.listen(process.env.PORT || 3000, function(){
+//To serve the static files
+app.use(express.static('app'));
+
+//Register the web server on port 80
+app.listen(process.env.PORT || 80, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
-
-app.listen(8888);
