@@ -13,7 +13,12 @@ app.use(bodyParser.json()); // for parsing application/json
 
 
 token = '150944d62a81baaf3daeaf81c0f42b009b96f560';
-var url = 'mongodb://localhost:32768/gitHubExplorer'
+
+//var url = 'mongodb://localhost:32768/gitHubExplorer';
+
+var url = 'mongodb://user:userPassword@ds139197.mlab.com:39197/heroku_q95cn1vs';
+
+
 
 //Api for the history
 app.use('/api', router);
