@@ -21,7 +21,7 @@ app.use('/api', router);
 router.get('/request', function (req, res) {
     MongoCLient.connect(url, function (err, db) {
         var collection = db.collection('request');
-        collection.find().sort({date:-1}).limit(2).toArray(function (err, data) {
+        collection.find().sort({date:-1}).limit(10).toArray(function (err, data) {
             res.send(data);
         });
         db.close();
@@ -70,6 +70,6 @@ app.get('/', function (req, res) {
 app.use(express.static('app'));
 
 //Register the web server on port 80
-app.listen(process.env.PORT || 80, function(){
+app.listen(process.env.PORT || 8080, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });

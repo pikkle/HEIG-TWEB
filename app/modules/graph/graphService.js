@@ -7,8 +7,8 @@
 
     function GitStatService($http, $q) {
 
-        user = 'pikkle';
-        repo = 'HEIG-VD-TWEB';
+        var user = 'pikkle';
+        var repo = 'HEIG-VD-TWEB';
 
 
         return {
@@ -21,11 +21,11 @@
             },
 
             setUser: function (newUser) {
-                user =  newUser;
+                var user =  newUser;
             },
 
             setRepo: function (newRepo) {
-                repo = newRepo;
+                var repo = newRepo;
             },
 
             getLanguages: function () {
@@ -37,10 +37,10 @@
 
 
                 promiseLanguages.then(function (ret) {
-                    languages = ret.data;
+                    var languages = ret.data;
                     languagesGraphLabels = Object.keys(languages);
                     languagesGraphData = [];
-                    for (item in languagesGraphLabels) {
+                    for (var item in languagesGraphLabels) {
                         languagesGraphData.push(languages[languagesGraphLabels[item]]);
                     }
                     deferred.resolve({
@@ -56,13 +56,13 @@
 
                 var promiseContrib = $http.get('/repos/' + user + '/' + repo + '/stats/contributors');
                 promiseContrib.then(function (ret) {
-                    contrib = ret.data;
+                    var contrib = ret.data;
 
-                    contribGraphLabels = [];
-                    contribGraphData = [];
+                    var contribGraphLabels = [];
+                    var contribGraphData = [];
 
 
-                    for(item in contrib){
+                    for(var item in contrib){
                         contribGraphLabels.push(contrib[item]['author']['login']);
                         contribGraphData.push(contrib[item]['total'])
                     }
@@ -82,21 +82,20 @@
                 var promiseAddPerWeek = $http.get('/repos/' + user + '/' + repo + '/stats/code_frequency');
 
                 promiseAddPerWeek.then(function (ret) {
-                    add = ret.data;
-                    linesAddGraphData = [];
-                    linesDelGraphData = [];
-                    linesDiffGraphData = [];
-                    lineGraphLabels = [];
-                    weeks = [];
-                    lineGraphSeries = ['Ajout', 'Supperssion', 'Differance'];
-
-                    d = new Date(0);
+                    var add = ret.data;
+                    var linesAddGraphData = [];
+                    var linesDelGraphData = [];
+                    var linesDiffGraphData = [];
+                    var lineGraphLabels = [];
+                    var weeks = [];
+                    var lineGraphSeries = ['Ajout', 'Supperssion', 'Differance'];
 
 
-                    for (item in add){
+
+                    for (var item in add){
                         weeks.push(add[item][0]);
 
-                        d = new Date(0);
+                        var d = new Date(0);
                         d.setUTCSeconds(add[item][0]);
 
                         lineGraphLabels.push(d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear());
