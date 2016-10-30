@@ -11,6 +11,8 @@
     function Graph($q, $http, GitStatService) {
         var vm = this;
 
+        vm.hiddeGraphs = false;
+
 
         vm.user = GitStatService.getUser();
         vm.repo = GitStatService.getRepo();
@@ -35,25 +37,38 @@
         setTimeout(function () {},2000);
 
        GitStatService.getLanguages().then(function (res) {
-           console.log(1);
+           vm.hiddeGraphs = false;
             vm.languagesGraphLabels = res.labels;
             vm.languagesGraphData = res.data;
-        });
+        }).catch(function (msg) {
+           if (msg === 'Repo not found')
+               vm.hiddeGraphs = true;
+           console.log(msg);
+       });
 
          setTimeout(function () {},2000);
 
         GitStatService.getContribs().then(function (res) {
+            vm.hiddeGraphs = false;
             vm.contribGraphLabels = res.labels;
             vm.contribGraphData = res.data
+        }).catch(function(msg) {
+            if (msg === 'Repo not found')
+               vm.hiddeGraphs = true;
+            console.log(msg);
         });
 
-        setTimeout(function () {},2000);
-
+        setTimeout(function () {},20000);
 
         GitStatService.getAddPerWeek().then(function (res) {
+            vm.hiddeGraphs = false;
             vm.linesGraphData = res.data;
             vm.lineGraphSeries = res.series;
             vm.lineGraphLabels = res.labels;
-        })
+        }).catch(function (msg) {
+            if (msg === 'Repo not found')
+               vm.hiddeGraphs = true;
+            console.log(msg);
+        });
     }
 })();

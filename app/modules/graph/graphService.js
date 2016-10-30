@@ -29,6 +29,7 @@
             },
 
             getLanguages: function () {
+
                 var deferred = $q.defer();
 
                 var promiseLanguages = $http.get('/repos/' + user + '/' + repo + '/languages');
@@ -37,6 +38,11 @@
 
 
                 promiseLanguages.then(function (ret) {
+                   if (ret.data.message === 'Not Found'){
+                        deferred.reject('Repo not found');
+                        return deferred.promise;
+                    }
+
                     var languages = ret.data;
                     languagesGraphLabels = Object.keys(languages);
                     languagesGraphData = [];
@@ -52,10 +58,16 @@
             },
 
             getContribs: function () {
+
                 var deferred = $q.defer();
 
                 var promiseContrib = $http.get('/repos/' + user + '/' + repo + '/stats/contributors');
                 promiseContrib.then(function (ret) {
+                    if (ret.data.message === 'Not Found'){
+                        deferred.reject('Repo not found');
+                        return deferred.promise;
+                    }
+
                     var contrib = ret.data;
 
                     var contribGraphLabels = [];
@@ -82,6 +94,11 @@
                 var promiseAddPerWeek = $http.get('/repos/' + user + '/' + repo + '/stats/code_frequency');
 
                 promiseAddPerWeek.then(function (ret) {
+                   if (ret.data.message === 'Not Found'){
+                        deferred.reject('Repo not found');
+                        return deferred.promise;
+                    }
+
                     var add = ret.data;
                     var linesAddGraphData = [];
                     var linesDelGraphData = [];

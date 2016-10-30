@@ -15,7 +15,9 @@
             <div class="col-md-4">
                 <h2 class="md-title">Commits par auteur</h2>
 
-                <canvas id="bar" class="chart chart-bar"
+                <div ng-hide="!vm.hiddeGraphs">Error ! Repo not found</div>
+
+                <canvas ng-hide="vm.hiddeGraphs" id="bar" class="chart chart-bar"
                         chart-data="vm.contribGraphData" chart-labels="vm.contribGraphLabels" chart-series="series">
                 </canvas>
 
@@ -25,7 +27,9 @@
 
                 <h2 class="md-title">Languages utilisés</h2>
 
-                <canvas id="pie" class="chart chart-pie"
+                <div ng-hide="!vm.hiddeGraphs">Error ! Repo not found</div>
+
+                <canvas ng-hide="vm.hiddeGraphs" id="pie" class="chart chart-pie"
                         chart-data="vm.languagesGraphData" chart-labels="vm.languagesGraphLabels" chart-options="options">
                 </canvas>
 
@@ -38,9 +42,10 @@
 
             <div class="col-md-10">
                 <h2 class="md-title">Progression du nombre de lignes</h2>
+                <div ng-hide="!vm.hiddeGraphs">Error ! Repo not found</div>
 
 
-                <canvas id="bar2" class="chart chart-bar" chart-data="vm.linesGraphData"
+                <canvas ng-hide="vm.hiddeGraphs" id="bar2" class="chart chart-bar" chart-data="vm.linesGraphData"
                         chart-labels="vm.lineGraphLabels" chart-series="vm.lineGraphSeries"
                         chart-click="onClick">
                 </canvas>
