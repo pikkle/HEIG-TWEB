@@ -3,6 +3,7 @@ HEIG-VD-TWEB
 
 Github explorer for the TWEB course at HEIG-VD.
 
+The landing page is at [https://pikkle.github.io/HEIG-TWEB/](https://pikkle.github.io/HEIG-TWEB/).<br>
 The application is hosted and usable at [https://tweb-leroyserafin.herokuapp.com/](https://tweb-leroyserafin.herokuapp.com/)
 
 -------------
