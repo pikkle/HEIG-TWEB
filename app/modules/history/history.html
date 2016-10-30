@@ -1,0 +1,20 @@
+<section id="features" class="features" style="text-align: center">
+    <div class="container">
+        <h2>
+            History <br />
+        </h2>
+        <h3>
+            The 10 last request on repos done on this website
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div style="padding-bottom: 10px" ng-repeat="item in vm.items">
+                    User {{ item.user }} on repo {{ item.repo }} at {{ item.date | date: 'medium'}}
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</section>

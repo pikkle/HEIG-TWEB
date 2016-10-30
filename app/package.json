@@ -1,0 +1,25 @@
+{
+  "name": "tweb-guithubexplorer",
+  "version": "0.1.0",
+  "description": "TWEB project GitHub Explorer",
+  "main": "server.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pikkle/HEIG-VD-TWEB.git"
+  },
+  "author": "Loic Serafin, Julien Leroy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pikkle/HEIG-VD-TWEB/issues"
+  },
+  "homepage": "https://github.com/pikkle/HEIG-VD-TWEB#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-chart.js": "^1.0.3",
+    "angular-core": "0.0.5",
+    "angular-resource": "^1.5.8",
+    "angular-ui-router": "^0.3.1"
+  }
+}
