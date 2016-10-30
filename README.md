@@ -1,4 +1,4 @@
-HEIG-VD-AMT
+HEIG-VD-TWEB
 ==========
 
 Github explorer for the TWEB course at HEIG-VD.
