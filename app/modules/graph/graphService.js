@@ -8,7 +8,7 @@
     function GitStatService($http, $q) {
 
         var user = 'pikkle';
-        var repo = 'HEIG-VD-TWEB';
+        var repo = 'HEIG-TWEB';
 
 
         return {
@@ -21,11 +21,11 @@
             },
 
             setUser: function (newUser) {
-                var user =  newUser;
+                user =  newUser;
             },
 
             setRepo: function (newRepo) {
-                var repo = newRepo;
+                repo = newRepo;
             },
 
             getLanguages: function () {
