@@ -34,7 +34,6 @@
             
         });
 
-        setTimeout(function () {},2000);
 
        GitStatService.getLanguages().then(function (res) {
            vm.hiddeGraphs = false;
@@ -46,7 +45,6 @@
            console.log(msg);
        });
 
-         setTimeout(function () {},2000);
 
         GitStatService.getContribs().then(function (res) {
             vm.hiddeGraphs = false;
@@ -58,7 +56,6 @@
             console.log(msg);
         });
 
-        setTimeout(function () {},20000);
 
         GitStatService.getAddPerWeek().then(function (res) {
             vm.hiddeGraphs = false;
