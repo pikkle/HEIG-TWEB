@@ -105,7 +105,7 @@
                     var linesDiffGraphData = [];
                     var lineGraphLabels = [];
                     var weeks = [];
-                    var lineGraphSeries = ['Ajout', 'Supperssion', 'Differance'];
+                    var lineGraphSeries = ['Add', 'Delete', 'Difference'];
 
 
 

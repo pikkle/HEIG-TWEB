@@ -1,11 +1,11 @@
 <section id="features" class="features" style="text-align: center">
     <div class="container">
         <div class="row" style="margin-bottom: 30px">
-            <div class="col-md-4"><input ng-model="vm.user" type="text" name="user" placeholder="Utilisateur"/></div>
+            <div class="col-md-4"><input ng-model="vm.user" type="text" name="user" placeholder="User"/></div>
             <div class="col-md-1" style="text-align: center; font-size: 30px; margin-top: 2px">/</div>
-            <div class="col-md-4"><input ng-model="vm.repo" type="text" name="repo" placeholder="Depo"/></div>
+            <div class="col-md-4"><input ng-model="vm.repo" type="text" name="repo" placeholder="Repo"/></div>
             <div class="col-md-3">
-                <button class="btn btn-outline btn-xl" ng-click="vm.fetchApi()" name="validate">Valider</button>
+                <button class="btn btn-outline btn-xl" ng-click="vm.fetchApi()" name="Fetch">Fetch</button>
             </div>
         </div>
     </div>
@@ -13,7 +13,7 @@
         <hr>
         <div class="row">
             <div class="col-md-4">
-                <h2 class="md-title">Commits par auteur</h2>
+                <h2 class="md-title">Commit per user</h2>
 
                 <div ng-hide="!vm.hiddeGraphs">Error ! Repo not found</div>
 
@@ -25,7 +25,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-4">
 
-                <h2 class="md-title">Languages utilisés</h2>
+                <h2 class="md-title">Used languages</h2>
 
                 <div ng-hide="!vm.hiddeGraphs">Error ! Repo not found</div>
 
@@ -41,7 +41,7 @@
             <div class="col-md-1"></div>
 
             <div class="col-md-10">
-                <h2 class="md-title">Progression du nombre de lignes</h2>
+                <h2 class="md-title">Code evolution</h2>
                 <div ng-hide="!vm.hiddeGraphs">Error ! Repo not found</div>
 
 
