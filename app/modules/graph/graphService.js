@@ -37,7 +37,7 @@
                 var languagesGraphData;
 
 
-                promiseLanguages.then(function (ret) {
+                return promiseLanguages.then(function (ret) {
                    if (ret.data.message === 'Not Found'){
                         deferred.reject('Repo not found');
                         return deferred.promise;
@@ -49,12 +49,11 @@
                     for (var item in languagesGraphLabels) {
                         languagesGraphData.push(languages[languagesGraphLabels[item]]);
                     }
-                    deferred.resolve({
+                    return {
                         data:  languagesGraphData,
                         labels: languagesGraphLabels
-                    });
+                    };
                 });
-                return deferred.promise;
             },
 
             getContribs: function () {
@@ -118,7 +117,7 @@
                         lineGraphLabels.push(d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear());
                         linesAddGraphData.push(add[item][1]);
                         linesDelGraphData.push(add[item][2]);
-                        linesDiffGraphData.push(add[item][1] - add[item][2]);
+                        linesDiffGraphData.push(add[item][1] + add[item][2]);
 
                     }
 

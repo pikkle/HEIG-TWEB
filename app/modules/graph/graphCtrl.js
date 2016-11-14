@@ -34,7 +34,7 @@
             
         });
 
-
+/*
        GitStatService.getLanguages().then(function (res) {
            vm.hiddeGraphs = false;
             vm.languagesGraphLabels = res.labels;
@@ -43,7 +43,14 @@
            if (msg === 'Repo not found')
                vm.hiddeGraphs = true;
            console.log(msg);
-       });
+       });*/
+
+        GitStatService.getLanguages().then(function (ret) {
+            vm.languagesGraphLabels = ret.labels;
+            vm.languagesGraphData = ret.data;
+        })
+
+
 
 
         GitStatService.getContribs().then(function (res) {
